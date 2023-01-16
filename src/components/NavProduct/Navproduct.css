@@ -1,0 +1,74 @@
+.product{
+    display: flex;
+    /* align-items: center; */
+    justify-content: space-evenly;
+    margin: 0;
+   
+}
+
+.all-product{
+    position: relative;
+    bottom: 40px;
+
+}
+
+.product-cart{
+    box-sizing: border-box;
+    height: 70px;
+    width: 140px;
+    color: black;
+    position: relative;
+    text-align: center;
+    line-height: 30px;
+    
+
+}
+
+.product-cart:hover .product-list{
+    display: flex;  
+    
+}
+
+.product-list{
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    position: absolute;
+
+}
+
+.dropdowns{
+    height: auto;
+    display: none;
+    /* position: relative; */
+    
+
+}
+
+a{
+    color: black;
+    display: block;
+    text-align: center;
+    text-decoration: none;
+
+}
+.odd{
+    width: 130px;
+    background-color: white;
+
+}
+.even{
+    width: 130px;
+    background-color: rgb(244, 244, 238);
+}
+
+.bottom-hr{
+    position: relative;
+    bottom: 28px;
+    box-shadow: 0 0 .8px;
+    z-index: -1;
+}
+
+.heading{
+    color: rgb(245, 93, 119);
+}

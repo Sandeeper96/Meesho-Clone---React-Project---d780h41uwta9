@@ -1,0 +1,105 @@
+.main-nav{
+    width: 100vw;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    bottom: 30px;
+}
+.meesho-logo > img{
+    width: 10rem;
+    
+
+}
+.search{
+    position: relative;
+    width: 350px;
+    height: 44px;
+    border: 2px solid #867c7c;
+    margin-left: 1rem;
+    border-radius: 6px;
+}
+
+.search-icon{
+    position: absolute;
+    top: 12px;
+    left: 8px;
+    font-size: 1.3rem;
+    background-color: white;
+    border: none;
+
+}
+
+
+.search input{
+    position: relative;
+    border: white;
+    left: 40px;
+    width: 300px;
+    height: 42px;
+    outline: none;
+    bottom: 0;
+    
+}
+.supplier{
+    margin: 30px;
+    color: rgb(82, 85, 85);
+    font-weight: lighter;
+}
+
+.dwl-app{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 100;
+    color: rgb(82, 85, 85);
+    width: 7rem;
+    margin-left: 8rem;
+    
+}
+
+.profile{
+    position: relative;
+    margin:30px;
+    color: rgb(82, 85, 85);
+}
+
+.profile h3{
+    margin: 0;
+}
+.cart{
+    margin: 30px;
+    color: rgb(82, 85, 85);
+}
+.cart-logo .profile-logo{
+    position: relative;
+    left: .7rem;
+}
+
+.cart h3{
+    margin: 0;
+}
+
+
+.profile-bar{
+    position: fixed;
+    display:;
+    z-index: 2;
+}
+.profile:hover{
+    color:  rgb(234, 70, 97);
+}
+
+.profile:hover .profile-bar{
+    display: block;
+    z-index: 1;
+    background-color: aliceblue;
+}
+
+.login{
+    background-color: rgb(234, 70, 97);
+    width: 80px;
+    height: 30px;
+}
