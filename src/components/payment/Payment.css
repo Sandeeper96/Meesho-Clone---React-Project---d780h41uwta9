@@ -1,0 +1,55 @@
+.payment{
+    width: 42vw;
+    height: 76vh;
+    display: grid;
+    box-shadow: 0 0 8px 4px;
+    position: relative;
+    left: 36rem;
+    top: 6rem;
+    padding: 8px;
+    
+    
+}
+.payment h1{
+    margin: 0;
+}
+
+.pay-detail{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    text-align: start;
+    margin-top: 2px;
+}
+
+.pay-detail input{
+    height: 20px;
+    margin-right: 2px;
+
+}
+
+.payment-option{
+    position: relative;
+    text-align: start;
+    top: 15px;
+}
+
+.payment-option select{
+    position: relative;
+    left: 90px;
+}
+
+.card-detail{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    position: relative;
+    top: 15px;
+    text-align: start;
+    margin-bottom: 2px;
+
+}
+
+.card-detail input{
+    height: 20px;
+    margin-right: 2px;
+}
+

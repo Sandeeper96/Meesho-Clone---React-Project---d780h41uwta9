@@ -1,0 +1,89 @@
+.cart-detail{
+    width: 45vw;
+    height: 14rem;
+    background-color: white;
+    padding-left: 2rem;
+    padding-top: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 6px;
+    box-shadow: 0 0 8px 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.cart-data img{
+    width: 100px;
+    position: relative;
+    right: -17px;
+    top: 9px;
+
+
+}
+
+.cart-data{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart-data p{
+    position: relative;
+    right: -4rem;
+    bottom: 1rem;
+    font-weight: bolder;
+    font-size: larger;
+    width: 14rem;
+}
+
+.cart-data h4{
+    position: relative;
+    right: 8rem;
+    top: 4rem;
+    background-color: deeppink;
+    width: 71px;
+    height: 35px;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0 0 8px 4px;
+}
+
+.haldle{
+    position: relative;
+    width: 10rem;
+    box-shadow: 0 0 8px 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.buynow{
+    position: relative;
+    right: 7rem;
+    top: 70px;
+    background-color: royalblue;
+    border-radius: 10px;
+    box-shadow: 0 0 8px 4px;
+}
+
+.haldle button{
+    width: 2rem;
+    height: 2rem;
+}
+
+.haldle h2{
+    position: relative;
+    bottom: 1px;
+    margin: 1rem;
+}
+
+.pay-section{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    width: 21rem;
+    position: relative;
+    left: 5rem;
+}

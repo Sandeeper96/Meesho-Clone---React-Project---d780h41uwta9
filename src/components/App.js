@@ -1,30 +1,23 @@
 import React, { useEffect, useState } from "react";
 import "../styles/App.css";
-import Login from "./login/Login";
-import SignInForm from "./login/SignInForm";
+import Detail from "./details/Detail";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./Home";
 import Navbar from "./Navbar";
-import Navproduct from "./NavProduct/Navproduct";
-import Product from "./product/Product";
+import Cart from "./cart/Cart";
+import Payment from "./payment/Payment"
 const App = () => {
-  const [currenform , setCurrentform] = useState('login');
-
-  const toggleForm=()=>{
-    setCurrentform(formName);
-  }
-
   return (
     <div>
-    {
-      currenform === "login" ? <Login onFormSwitch={toggleForm} /> : <SignInForm  onFormSwitch={toggleForm} />
-    }
-
-    <div>
-
-    </div>
-      
-      <Navbar />
-      <Navproduct />
-      <Product/>
+  
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/detail" element={<><Navbar/><Detail /></>} />
+          <Route path="/cardcrad" element={<><Navbar/><Cart/></>}/>
+          <Route path="/payment" element={<><Navbar/><Payment/></>}/>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 };

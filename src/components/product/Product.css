@@ -9,7 +9,7 @@
     margin: 10px;
     box-shadow: 0 0 8px 4px gray;
     border-radius: 10px;
-    height: 360px;
+    height: 400px;
 }
 
 .product-card > img{
@@ -30,6 +30,7 @@
     font-weight: bolder;
     font-size: large;
     margin: 0;
+    top: 45px;
 }
 
 .rating{

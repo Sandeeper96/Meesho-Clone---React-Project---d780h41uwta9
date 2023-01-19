@@ -9,7 +9,7 @@ export default function Navproduct() {
         <div className="product-cart">
           Women Ethnic
           <div className="product-list dropdowns">
-            <div className="All-women-ethnic odd">
+            <div className="odd">
               <a className="heading" href="">
                 All Women Ethnic
               </a>

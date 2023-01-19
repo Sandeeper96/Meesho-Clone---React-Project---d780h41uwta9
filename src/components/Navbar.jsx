@@ -8,8 +8,14 @@ import { BsCart2 } from "react-icons/bs";
 import Profile from "./login/Profile";
 import Overlay from "./overlay/Overlay";
 import SignInForm from "./login/SignInForm";
+import Login from "./login/Login";
+import { NavLink } from "react-router-dom";
 
 export default function Navbar() {
+
+
+  const [currentForm, setCurrentForm] = useState(false);
+
   const [flag, setFlag] = useState(false);
   const ChangeTheState = () => {
     setFlag(true);
@@ -19,16 +25,24 @@ export default function Navbar() {
     setFlag(false);
   };
 
+  const toggleForm=()=>{
+    setCurrentForm(!currentForm);
+  }
+
   return (
     <>
       <div className="main-nav">
         <div className="meesho-logo">
-          <img src={logo} alt="logo" />
+        <NavLink to='/'>
+          <img className="img-logo" src={logo} alt="logo" />
+          </NavLink>
         </div>
         <div className="search">
           <button className="search-icon">
+          
             <BsSearch />
           </button>
+         
           <input
             type="text"
             placeholder="Try Saari,Kurti or Search by Product Code"
@@ -52,14 +66,16 @@ export default function Navbar() {
         </div>
         <div className="cart">
           <div>
+          <NavLink to='/cardcrad'>
             <BsCart2 className="cart-logo" />
             <h3>Cart</h3>
+            </NavLink>
           </div>
         </div>
       </div>
       {flag && (
         <Overlay OverStatus={OverStatus}>
-          <SignInForm />
+         {currentForm?<Login toggleForm={toggleForm}/>:<SignInForm toggleForm={toggleForm} />} 
         </Overlay>
       )}
     </>

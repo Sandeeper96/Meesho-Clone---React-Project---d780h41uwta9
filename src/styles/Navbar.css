@@ -7,7 +7,7 @@
     position: relative;
     bottom: 30px;
 }
-.meesho-logo > img{
+.img-logo{
     width: 10rem;
     
 
@@ -85,7 +85,7 @@
 
 .profile-bar{
     position: fixed;
-    display:;
+    display: none;
     z-index: 2;
 }
 .profile:hover{
