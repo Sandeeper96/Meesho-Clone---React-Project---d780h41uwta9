@@ -5,7 +5,6 @@ import "./Cart.css"
 function CartCard(props) {
     const [addcart, setAddcart]= useState(props.cartItem.count);
 
-    const [cartoff, setCartoff] = useState(false)
 
     console.log(props)
    const cartRemove=()=>{
@@ -112,7 +111,6 @@ function CartCard(props) {
     <NavLink to="/payment">
     <button className='buynow'>Buy Now</button>
     </NavLink>
-    <button onClick={cartRemove}>X</button>
     </div>
    
 

@@ -131,7 +131,7 @@ export default function SignInForm(props) {
           placeholder="Password"
         />
         <button type="submit">
-          Sign In
+          Sign Up
         </button>
       </form>
       <button
