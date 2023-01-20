@@ -12,6 +12,9 @@ import Login from "./login/Login";
 import { NavLink } from "react-router-dom";
 
 export default function Navbar(props) {
+  const [loginflag , setLoginflag] = useState(false);
+
+  const [userdata, setUserdata] = useState("");
 
 
   const [currentForm, setCurrentForm] = useState(false);
@@ -29,20 +32,25 @@ export default function Navbar(props) {
     setCurrentForm(!currentForm);
   }
 
+  const loginStatus=(arg)=>{
+    setLoginflag(true)
+    setUserdata(arg)
+
+  }
+
   return (
     <>
       <div className="main-nav">
         <div className="meesho-logo">
-        <NavLink to='/'>
-          <img className="img-logo" src={logo} alt="logo" />
+          <NavLink to="/">
+            <img className="img-logo" src={logo} alt="logo" />
           </NavLink>
         </div>
         <div className="search">
           <button className="search-icon">
-          
             <BsSearch />
           </button>
-         
+
           <input
             type="text"
             placeholder="Try Saari,Kurti or Search by Product Code"
@@ -60,27 +68,29 @@ export default function Navbar(props) {
             <CiUser className="profile-logo" />
             <div>
               <h3>Profile</h3>
-              <Profile stateCallBack={ChangeTheState} />
+              <Profile userdata={userdata} loginflag={loginflag} stateCallBack={ChangeTheState} />
             </div>
           </div>
         </div>
         <div className="cart">
           <div>
-          <NavLink to='/cardcrad'>
-            <BsCart2 className="cart-logo" />
-            <h3>Cart</h3>
+            <NavLink to="/cardcrad">
+              <BsCart2 className="cart-logo" />
+              <h3>Cart</h3>
             </NavLink>
           </div>
         </div>
       </div>
-     
+   
       {flag && (
         <Overlay OverStatus={OverStatus}>
-         {currentForm?<Login toggleForm={toggleForm}/>:<SignInForm toggleForm={toggleForm} />} 
+          {currentForm ? (
+            <Login loginStatus={loginStatus} toggleForm={toggleForm} />
+          ) : (
+            <SignInForm toggleForm={toggleForm} />
+          )}
         </Overlay>
-       
       )}
-     
     </>
   );
 }

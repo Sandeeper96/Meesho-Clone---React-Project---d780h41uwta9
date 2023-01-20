@@ -3,47 +3,82 @@ import "../login/Profile.css";
 import Welcome from "./Welcome";
 
 export default function Login(props) {
-  // const [emaillog, setEmaillog] = useState("");
-  // const [passwordlog, setPasswordlog] = useState("");
-   const [flag, setFlag] = useState(false);
-   const [home, setHome] = useState(true);
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  // const [userFlag, setUserFlag] = useState(false);
+  // const [passwordFlag, setPasswordFlag] = useState(false);
+  // const [warningMsg,setWarningMsg] = useState(false)
+  let loginInfo;
 
-  const [login,setLogin] = useState({
-    emial:"",
-    password:""
-  })
+  loginInfo = JSON.parse(localStorage.getItem("userInfo"));
 
-  function LoginForm(event) {
-    event.preventDefault();
-    let logindata = localStorage.getItem("loginDetails");
-  
+  const submitHandler = (e) => {
+    e.preventDefault();
+    // setUserFlag(false);
+    // setPassword(false);
+    // setWarningMsg(false);
 
-    if (login=== logindata) {
-      setFlag(true);
-    } else {
-      setHome(!home);
-      setFlag(false);
+    // if (userName === "") {
+    //   setUserFlag(true);
+    //   return;
+    // }
+
+    // if (password === "") {
+    //   setPasswordFlag(true);
+    //   return;
+    // }
+
+    if (userName !== "" && password !== "") {
+      const storeToLocal = {
+        userName,
+        password,
+      };
+      let data;
+      if (
+        loginInfo.some(
+          (info) =>
+          {if((info.userName === storeToLocal.userName) && (info.password === storeToLocal.password)){
+            data = info;
+            return true;
+          }}
+          
+        )
+      ) {
+        // props.stateUpLisft(data.userName);
+        props.loginStatus(data.userName)
+      } else {
+        setWarningMsg(true);
+        return
+      }
     }
-  }
+    // props.functionCall();
+  };
+
+  const userInputHandler = (e) => {
+    setUserName(e.target.value);
+  };
+
+  const passwordInputHandler = (e) => {
+    setPassword(e.target.value);
+  };
+
 
   return (
     <div>
-      {home ? (
-        <>
-          <form className="SignIn" onSubmit={LoginForm}>
+          <form className="SignIn" onSubmit={submitHandler}>
             <label htmlFor="">Email Id:</label>
             <input
-              onChange={(event) => setEmaillog(event.target.value)}
-              type="email"
-              placeholder="Email"
+              onChange={userInputHandler}
+              type="name"
+              placeholder="Name"
             />
             <label htmlFor="">Password</label>
             <input
               type="password"
-              onChange={(event) => setPasswordlog(event.target.value)}
+              onChange={passwordInputHandler}
               placeholder="Password"
             />
-            <button type="submit" onClick={LoginForm}>
+            <button type="submit">
               Login
             </button>
           </form>
@@ -55,10 +90,8 @@ export default function Login(props) {
           >
             don't have an account?
           </button>
-        </>
-      ) : (
-        <Welcome />
-      )}
+    
+     
     </div>
   );
 }
