@@ -11,8 +11,12 @@ function Cart() {
       data = null;
     } else {
       data = JSON.parse(sessionStorage.getItem("cart"));
+      if(data.length===0){
+        data=null;
+      }
       console.log(data);
     }
+
     const CardDataCart=(arr)=>{
         return arr.map((item,index)=>{
             return <CartCard cartItem={item}/>

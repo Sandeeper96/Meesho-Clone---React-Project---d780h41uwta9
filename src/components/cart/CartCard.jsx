@@ -1,112 +1,88 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom';
 import "./Cart.css"
 
 function CartCard(props) {
-    const [addcart, setAddcart]= useState(props.cartItem.count);
+  let storageDetils= JSON.parse (sessionStorage.getItem("cart"));
 
+    const [addcart, setAddcart]= useState(null);
+
+    useEffect(()=>{
+      setAddcart(props.cartItem)
+    },[])
 
     console.log(props)
    const cartRemove=()=>{
     setCartoff(false);
    }
 
-    const AddtoCart = () => {
-        let cartObject = {
-          data:props.cartItem.data,
-          count: props.cartItem.count,
-        };
-        const cartData = sessionStorage.getItem("cart");
-        let cartArr;
-        if (cartData === null) {
-          cartArr = [];
-          cartArr.push(cartObject);
+   const increment = (arg) => {
+    let tempCount;
+    let tempIndex;
+    if(storageDetils.some((item,index) => {
+        if(item.item === arg.item){
+            tempCount = item.count;
+            tempIndex = index;
+            return true
         } else {
-          cartArr = JSON.parse(cartData);
-          let tempCount;
-          let indexOfCart;
-          if (
-            cartArr.some((item, index) => {
-              if (item.data.id === props.cartItem.data.id) {
-                tempCount = item.count;
-                indexOfCart=index
-                return true;
-              }
-              return false;
-            })
-          ) {
-            console.log("duplicate");
-            cartArr.splice(indexOfCart,1);
-            cartArr.push({
-              ...cartObject,
-              count: tempCount + 1,
-
-            });
-            setAddcart(tempCount+1)
-            console.log(cartArr);
-          } else {
-            cartArr.push(cartObject);
-          }
+            return false
         }
-        sessionStorage.setItem("cart", JSON.stringify(cartArr));
-      };
-
-      const removeCart=()=>{
-        let cartObject = {
-            data:props.cartItem.data,
-            count: props.cartItem.count
-          };
-          const cartData = sessionStorage.getItem("cart");
-          let cartArr;
-          if (cartData === null) {
-            cartArr = [];
-            cartArr.push(cartObject);
-          } else {
-            cartArr = JSON.parse(cartData);
-            let tempCount;
-            let indexOfCart;
-            if (
-              cartArr.some((item, index) => {
-                if (item.data.id === props.cartItem.data.id) {
-                  tempCount = item.count;
-                  indexOfCart=index
-                  return true;
-                }
-                return false;
-              })
-            ) {
-              console.log("duplicate");
-              cartArr.splice(indexOfCart,1);
-              if(tempCount===0){
-                return 
-              }
-              cartArr.push({
-                ...cartObject,
-                count: tempCount - 1,
-                
-                
-  
-              });
-              setAddcart(tempCount-1)
-              console.log(cartArr);
-            } else {
-              cartArr.push(cartObject);
-            }
-          }
-          sessionStorage.setItem("cart", JSON.stringify(cartArr));
-        
-
+    })) {
+        storageDetils[tempIndex].count = tempCount + 1;
+        sessionStorage.setItem('cart',JSON.stringify(storageDetils));
+        setAddcart(storageDetils[tempIndex]);
+    } else {
+        console.log('no data')
+    }
+    console.log(arg)
+}
+ 
+const decrement = (arg) => {
+  let tempCount;
+  let tempIndex;
+  if(storageDetils.some((item,index) => {
+      if(item.item === arg.item){
+          tempCount = item.count;
+          tempIndex = index;
+          return true
+      } else {
+          return false
       }
+  })) {
+      storageDetils[tempIndex].count = tempCount - 1;
+      if(tempCount===1){
+        storageDetils.splice(tempIndex,1)
+      }
+      if(storageDetils===[]){
+        sessionStorage.removeItem("cart")
+        setAddcart(null)
+        return
+      }
+      console.log(storageDetils)
+      sessionStorage.setItem('cart',JSON.stringify(storageDetils));
+
+      setAddcart(storageDetils[tempIndex]);
+  } else {
+      console.log('no data')
+  }
+  console.log(arg)
+}
+
+
+
+     
   return (
+    <div>
+    { addcart===null  || storageDetils.length===0 ? "":
     <div className='cart-detail'>
     <div className='cart-data'>
-    <img src={props.cartItem.data.image} alt="" />
-    <p>{props.cartItem.data.title}</p>
-    <h4> $ {props.cartItem.data.price}</h4>
+    <img src={addcart.data.image} alt="" />
+    <p>{addcart.data.title}</p>
+    <h4> $ {addcart.data.price}</h4>
     <div className='haldle'>
-    <button onClick={removeCart}>-</button>
-    <h2>{addcart}</h2>
-    <button onClick={AddtoCart}>+</button>
+    <button onClick={()=>{decrement(props.cartItem)}}>-</button>
+    <h2>{addcart.count}</h2>
+    <button onClick={()=>{increment(props.cartItem)}}>+</button>
     </div>
     <NavLink to="/payment">
     <button className='buynow'>Buy Now</button>
@@ -115,6 +91,8 @@ function CartCard(props) {
    
 
     </div>
+      }
+      </div>
   )
 }
 
