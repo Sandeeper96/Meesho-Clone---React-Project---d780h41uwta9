@@ -1,5 +1,6 @@
 import React, { useState,useEffect } from 'react';
-import Api from '../utils/api/Api';
+import Api from '../utils/api/api';
+
 import { ProductList } from './ProductList';
 
  
