@@ -74,7 +74,7 @@ export default function Navbar(props) {
         </div>
         <div className="cart">
           <div>
-            <NavLink to="/cardcrad">
+             <NavLink to="/cardcrad">
               <BsCart2 className="cart-logo" />
               <h3>Cart</h3>
             </NavLink>
