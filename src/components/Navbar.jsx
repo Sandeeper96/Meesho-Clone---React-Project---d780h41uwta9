@@ -11,7 +11,7 @@ import SignInForm from "./login/SignInForm";
 import Login from "./login/Login";
 import { NavLink } from "react-router-dom";
 
-export default function Navbar() {
+export default function Navbar(props) {
 
 
   const [currentForm, setCurrentForm] = useState(false);
@@ -73,11 +73,14 @@ export default function Navbar() {
           </div>
         </div>
       </div>
+     
       {flag && (
         <Overlay OverStatus={OverStatus}>
          {currentForm?<Login toggleForm={toggleForm}/>:<SignInForm toggleForm={toggleForm} />} 
         </Overlay>
+       
       )}
+     
     </>
   );
 }

@@ -6,7 +6,7 @@ function Payment() {
   return (
     <NavLink to="/payment" >
     <div>
-    
+    <div className='goback'>Go Back</div>
     <div className='payment'>
     <h1>Payment</h1>
     <div className='pay-detail'>
