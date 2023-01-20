@@ -3,6 +3,7 @@ import "../login/Profile.css";
 import Welcome from "./Welcome";
 
 export default function Login(props) {
+  const [home ,setHome ] = useState(false);
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   // const [userFlag, setUserFlag] = useState(false);
@@ -46,6 +47,7 @@ export default function Login(props) {
       ) {
         // props.stateUpLisft(data.userName);
         props.loginStatus(data.userName)
+        setHome(!home)
       } else {
         setWarningMsg(true);
         return
@@ -64,6 +66,7 @@ export default function Login(props) {
 
 
   return (
+   
     <div>
           <form className="SignIn" onSubmit={submitHandler}>
             <label htmlFor="">Email Id:</label>
@@ -93,5 +96,7 @@ export default function Login(props) {
     
      
     </div>
+   
+
   );
 }
