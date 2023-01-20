@@ -3,7 +3,7 @@ import "../login/Profile.css";
 import Welcome from "./Welcome";
 
 export default function Login(props) {
-  const [home ,setHome ] = useState(false);
+  const [home ,setHome ] = useState(true);
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   // const [userFlag, setUserFlag] = useState(false);
@@ -66,7 +66,8 @@ export default function Login(props) {
 
 
   return (
-   
+    <div>
+   { home ? (
     <div>
           <form className="SignIn" onSubmit={submitHandler}>
             <label htmlFor="">Email Id:</label>
@@ -95,6 +96,8 @@ export default function Login(props) {
           </button>
     
      
+    </div>
+    ) : (<Welcome/>)}
     </div>
    
 

@@ -66,10 +66,12 @@ export default function Navbar(props) {
         <div className="profile">
           <div>
             <CiUser className="profile-logo" />
+            { loginflag  ? <div className='profile'><h2>{userdata}</h2></div> : 
             <div>
               <h3>Profile</h3>
               <Profile userdata={userdata} loginflag={loginflag} stateCallBack={ChangeTheState} />
             </div>
+  }
           </div>
         </div>
         <div className="cart">

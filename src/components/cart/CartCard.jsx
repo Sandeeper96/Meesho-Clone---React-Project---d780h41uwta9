@@ -5,7 +5,13 @@ import "./Cart.css"
 function CartCard(props) {
     const [addcart, setAddcart]= useState(props.cartItem.count);
 
+    const [cartoff, setCartoff] = useState(false)
+
     console.log(props)
+   const cartRemove=()=>{
+    setCartoff(false);
+   }
+
     const AddtoCart = () => {
         let cartObject = {
           data:props.cartItem.data,
@@ -78,6 +84,8 @@ function CartCard(props) {
               cartArr.push({
                 ...cartObject,
                 count: tempCount - 1,
+                
+                
   
               });
               setAddcart(tempCount-1)
@@ -104,6 +112,7 @@ function CartCard(props) {
     <NavLink to="/payment">
     <button className='buynow'>Buy Now</button>
     </NavLink>
+    <button onClick={cartRemove}>X</button>
     </div>
    
 
