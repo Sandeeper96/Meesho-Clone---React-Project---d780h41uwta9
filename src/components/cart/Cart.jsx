@@ -11,9 +11,9 @@ function Cart() {
       data = null;
     } else {
       data = JSON.parse(sessionStorage.getItem("cart"));
-      if(data.length===0){
-        data=null;
-      }
+      // if(data.length===0){
+      //   data=null;
+      // }
       console.log(data);
     }
 

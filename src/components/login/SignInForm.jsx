@@ -3,39 +3,15 @@ import React, { useState } from "react";
 import "../login/Profile.css";
 
 export default function SignInForm(props) {
-  // const [login, setLogin] = useState({
-  //   name: "",
-  //   email: "",
-  //   password: "",
-  // });
-
-  // const signUpForm = () => {
-  //   let loginData = localStorage.getItem("loginDetails");
-  //   if (loginData == null) {
-  //     loginData = [];
-  //     loginData.push(login);
-  //     localStorage.setItem("loginDetails", JSON.stringify(loginData));
-  //   } else {
-  //     let data = JSON.parse(loginData);
-  //     data.push(login);
-  //     localStorage.setItem("loginDetails", JSON.stringify(data));
-  //   }
-  // };
-
-  // const SignForm = (event) => {
-  //   event.preventDefault();
-  // };
+ 
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  // const [userFlag, setUserFlag] = useState(false);
-  // const [emailFlag, setEmailFlag] = useState(false);
-  // const [passwordFlag, setPasswordFlag] = useState(false);
-  // const [infoExist, setInfoExist] = useState(false);
+  
 
   const loginFunction = (e) => {
     e.stopPropagation();
-    // props.flagSet();
+    
   };
 
   const userInputHandler = (e) => {
@@ -60,25 +36,6 @@ export default function SignInForm(props) {
   const submitHandler = (e) => {
     e.preventDefault();
 
-    // setUserFlag(false);
-    // setEmailFlag(false);
-    // setPasswordFlag(false);
-    // setInfoExist(false);
-
-    // if (userName === "") {
-    //   setUserFlag(true);
-    //   return;
-    // }
-
-    // if (email === "") {
-    //   setEmailFlag(true);
-    //   return;
-    // }
-
-    // if (password === "") {
-    //   setPasswordFlag(true);
-    //   return;
-    // }
 
     if (userName !== "" && password !== "" && email !== "") {
       const storeToLocal = {

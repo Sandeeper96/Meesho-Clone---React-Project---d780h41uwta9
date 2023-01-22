@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, {  useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom';
 import "./Cart.css"
+
+
 
 function CartCard(props) {
   let storageDetils= JSON.parse (sessionStorage.getItem("cart"));
@@ -11,10 +13,7 @@ function CartCard(props) {
       setAddcart(props.cartItem)
     },[])
 
-    console.log(props)
-   const cartRemove=()=>{
-    setCartoff(false);
-   }
+
 
    const increment = (arg) => {
     let tempCount;
@@ -53,11 +52,7 @@ const decrement = (arg) => {
       if(tempCount===1){
         storageDetils.splice(tempIndex,1)
       }
-      if(storageDetils===[]){
-        sessionStorage.removeItem("cart")
-        setAddcart(null)
-        return
-      }
+    
       console.log(storageDetils)
       sessionStorage.setItem('cart',JSON.stringify(storageDetils));
 
@@ -80,18 +75,22 @@ const decrement = (arg) => {
     <p>{addcart.data.title}</p>
     <h4> $ {addcart.data.price}</h4>
     <div className='haldle'>
-    <button onClick={()=>{decrement(props.cartItem)}}>-</button>
+    <button onClick={()=>{decrement(addcart)}}>-</button>
     <h2>{addcart.count}</h2>
-    <button onClick={()=>{increment(props.cartItem)}}>+</button>
+    <button onClick={()=>{increment(addcart)}}>+</button>
     </div>
     <NavLink to="/payment">
     <button className='buynow'>Buy Now</button>
     </NavLink>
     </div>
    
+    
+   
 
     </div>
       }
+  
+  
       </div>
   )
 }

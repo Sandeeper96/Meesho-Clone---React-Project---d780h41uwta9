@@ -25,7 +25,7 @@ export function ProductList(props) {
               {item.title}
             </p>
             <p className="rupee" key={"price" + index}>
-              <span>&#8377;</span> {item.price}
+              <span>$</span> {item.price}
             </p>
             <div className="rating">
               <p className="rating-p" key={"rating" + index}>
